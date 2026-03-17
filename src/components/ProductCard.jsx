@@ -1,3 +1,5 @@
+import { IterationCcw } from 'lucide-react';
+
 export const ProductCard = ({ product, onAgregar }) => (
   <div className='bg-gray-900 text-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300 w-64border p-4 rounded-xl shadow-sm  '>
     <img
