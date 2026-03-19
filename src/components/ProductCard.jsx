@@ -1,22 +1,43 @@
 import { IterationCcw } from 'lucide-react';
 
-export const ProductCard = ({ product, onAgregar }) => (
-  <div className='bg-gray-900 text-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300 w-64border p-4 rounded-xl shadow-sm  '>
-    <img
-      src={product.image}
-      alt={product.name}
-      width='200'
-      className='w-full h-48 object-cover'
-    />
-    <div className='p-4 flex flex-col gap-2 '>
-      <h3 className='text-lg font-bold'>{product.name}</h3>
-      <p className='text-sm text-gray-500'>{product.category}</p>
-      <span className='text-sm text-green-600'>{product.price}</span>
-      <button
-        onClick={() => onAgregar(product)}
-        className='mt-2 bg-indigo-600 hover:bg-indigo-700 active:scale-95  transition-colors rounded-lg py-2 text-sm font-semibold cursor-pointer'>
-        Añadir al carrito
-      </button>
+export const ProductCard = ({ product, onAgregar }) => {
+  // 1. Usamos el punto medio para preparar el estilo del precio
+  const precioFormateado = product.price.toLocaleString('es-ES', {
+    style: 'currency',
+    currency: 'EUR',
+  });
+
+  return (
+    <div className='bg-white text-gray-900 rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col border border-gray-100'>
+      {/* Contenedor de Imagen con aspecto de producto */}
+      <div className='h-52 w-full bg-gray-50 flex items-center justify-center p-4'>
+        <img
+          src={product.image}
+          alt={product.name}
+          className='max-h-full max-w-full object-contain hover:scale-110 transition-transform duration-500'
+        />
+      </div>
+
+      <div className='p-5 flex flex-col gap-2 flex-1'>
+        <span className='text-xs font-bold text-indigo-600 uppercase tracking-widest'>
+          {product.category}
+        </span>
+        <h3 className='text-md font-semibold text-gray-800 line-clamp-2 h-12'>
+          {product.name}
+        </h3>
+
+        <div className='mt-auto pt-4 flex items-center justify-between'>
+          <span className='text-xl font-black text-gray-900'>
+            {precioFormateado}
+          </span>
+          <button
+            onClick={() => onAgregar(product)}
+            className='bg-gray-900 hover:bg-indigo-600 text-white p-3 rounded-full shadow-lg active:scale-90 transition-all cursor-pointer'
+            title='Añadir al carrito'>
+            🛒
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-);
+  );
+};

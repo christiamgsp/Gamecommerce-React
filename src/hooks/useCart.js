@@ -49,7 +49,7 @@ export const useCart = () => {
       return;
     } else {
       alert(
-        `Compra de ${total} hecha con Exito pronto recibiras en tu mail los codigos `
+        `Compra de ${total.toFixed(2)} hecha con Exito pronto recibiras tus productos  `
       );
 
       setCarrito([]);
