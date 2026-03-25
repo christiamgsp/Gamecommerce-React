@@ -2,6 +2,11 @@
 
 <div align="center">
 
+<img src="./src/assets/inicio.png" width="400" alt="Vista de Inicio de SmartShop" /> 
+<img src="./src/assets/Iaplicada.png" width="400" alt="Asistente IA en Acción" />
+
+<br/>
+
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
@@ -14,7 +19,7 @@
 
 </div>
 
-**SmartShop** es una plataforma de comercio electrónico moderna que integra un asistente de Inteligencia Artificial para mejorar la experiencia de usuario. Este proyecto destaca por su gestión eficiente del estado y persistencia de datos en tiempo real.
+**SmartShop** es una plataforma de comercio electrónico de última generación que integra un asistente de Inteligencia Artificial para asesorar al usuario durante su compra. El proyecto se centra en la eficiencia, el diseño moderno y la persistencia de datos.
 
 🚀 **[Ver Demo en Vivo](https://modern-ecommerce-react-ph12eex9c-christiamgsps-projects.vercel.app/)**
 
@@ -22,55 +27,65 @@
 
 ## 🛠️ Stack Tecnológico
 
-He utilizado las mejores herramientas del ecosistema actual de React para garantizar rendimiento y escalabilidad:
+He seleccionado un stack moderno para garantizar una experiencia de usuario fluida y un desarrollo escalable:
 
-- **Core:** `React 18` + `Vite` (Velocidad de carga extrema).
-- **Estilos:** `Tailwind CSS` (Diseño moderno y totalmente responsive).
-- **Navegación:** `React Router DOM` (Manejo de rutas dinámicas para productos).
-- **Estado Global:** `Context API` (Sincronización total del carrito).
-- **IA:** `Groq SDK` + `Llama 3` (Asistente inteligente integrado).
-- **Feedback:** `Sonner` (Notificaciones elegantes de tipo Toast).
-- **Iconografía:** `Lucide React` (Iconos vectoriales limpios).
+- **Core:** `React 18` + `Vite` para un rendimiento de carga instantáneo.
+- **Estilos:** `Tailwind CSS` con un enfoque "Mobile First" y diseño totalmente responsive.
+- **Navegación:** `React Router DOM` para gestionar rutas dinámicas de productos y navegación SPA.
+- **Estado Global:** `Context API` para centralizar la lógica del carrito de compras.
+- **IA:** `Groq SDK` + `Llama 3`, permitiendo consultas en lenguaje natural sobre el catálogo.
+- **Feedback:** `Sonner` para notificaciones interactivas (Toasts) de éxito y error.
+- **Iconografía:** `Lucide React` para una interfaz visual limpia y profesional.
 
 ---
 
-## 🧠 Características Técnicas Destacadas
+## 🧠 Características y Lógica de React Aplicada
+
+Este proyecto demuestra el dominio de conceptos clave en el ecosistema de React:
 
 ### 🤖 Asistente de IA (Smart Advisor)
 
-Cada producto tiene acceso a un agente de IA que analiza el contexto. Gracias a las **Variables de Entorno en Vercel**, la comunicación con Groq es segura y eficiente, permitiendo al usuario preguntar detalles técnicos antes de comprar.
+Integración de un chatbot contextual que recibe la información del producto actual. Se configuraron **Variables de Entorno (`VITE_`)** en Vercel para asegurar una conexión privada y segura con la API de Groq Cloud.
 
-### 💾 Persistencia de Datos (LocalStorage)
+### 💾 Persistencia de Datos (LocalStorage Custom Hook)
 
-He desarrollado un **Hook Personalizado** llamado `useLocalStorage`. Este hook intercepta el estado del carrito y lo sincroniza con el navegador, asegurando que:
+Desarrollo de un Hook personalizado `useLocalStorage` que automatiza la sincronización del carrito.
 
-1. Al cerrar la pestaña, los productos sigan ahí.
-2. Al refrescar (F5), no se pierda la selección del usuario.
-3. Se eviten errores de hidratación mediante validaciones de tipo `window !== "undefined"`.
+- **Sincronización:** Guarda automáticamente cada cambio (suma, resta o eliminación).
+- **Recuperación:** Al recargar la página (`F5`), el estado se restaura desde el almacenamiento local, evitando que el usuario pierda su selección.
 
-### ⚡ Carga Optimizada
+### ⚡ Optimización de UI (Skeletons)
 
-Implementación de **Skeletons** (`SkeletonCard`) para mejorar el _User Experience_ (UX) mientras se obtienen los datos de la API externa (DummyJSON).
-
----
-
-## 📂 Estructura del Proyecto
-
-- `/components`: Componentes reutilizables (Navbar, Cards, IA).
-- `/context`: Lógica centralizada del carrito (`CartContext`).
-- `/hooks`: Lógica extraída y reutilizable (`useLocalStorage`).
-- `/pages`: Vistas principales (Home, Detalle, Carrito, 404).
+Uso de componentes de carga (`SkeletonCard`) para mejorar el _Lighthouse score_ y reducir la percepción de espera del usuario mientras se obtienen los datos de la API de DummyJSON.
 
 ---
 
-## 🚀 Instalación y Uso
+## 📂 Estructura de Carpetas
 
-1.  Clona este repositorio.
-2.  Instala dependencias con `npm install`.
-3.  Configura tu clave en un archivo `.env`:
-    `VITE_GROQ_API_KEY=tu_api_key_aqui`
-4.  Lanza el proyecto con `npm run dev`.
+- `/src/components`: Componentes atómicos (Navbar, ProductCard, IAAssistant).
+- `/src/context`: Manejo del estado global con `CartContext`.
+- `/src/hooks`: Lógica extraída como `useLocalStorage`.
+- `/src/pages`: Vistas de la aplicación (Home, Carrito, Detalle, 404).
+- `/src/assets`: Recursos estáticos y capturas de pantalla.
 
 ---
 
-Desarrollado con dedicación para mi Portfolio 🚀 - [Christiam]
+## 🚀 Instalación Local
+
+1.  Clona el repositorio.
+2.  Instala las dependencias:
+    ```bash
+    npm install
+    ```
+3.  Crea un archivo `.env` en la raíz con tu clave:
+    ```env
+    VITE_GROQ_API_KEY=tu_clave_aqui
+    ```
+4.  Ejecuta el proyecto:
+    ```bash
+    npm run dev
+    ```
+
+---
+
+Desarrollado con ♥️ por [Christiam] - 2026 🚀
