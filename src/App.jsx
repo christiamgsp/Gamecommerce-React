@@ -7,6 +7,7 @@ import { Routes, Route } from 'react-router-dom';
 import { CarritoPage } from './pages/CarritoPage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
 import { CartContext } from './context/CartContext';
+import { NotFound } from './pages/NotFound';
 
 const formaterProducto = (apiItem) => ({
   id: apiItem.id,
@@ -54,7 +55,7 @@ function App() {
             <Route
               path='/'
               element={
-                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
                   {productosApi.length === 0 ? (
                     [...Array(8)].map((_, i) => <SkeletonCard key={i} />)
                   ) : searchedList.length > 0 ? (
@@ -78,6 +79,7 @@ function App() {
             />
             <Route path='/carrito' element={<CarritoPage />} />
             <Route path='/producto/:id' element={<ProductDetailPage />} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
         </div>
       </main>
