@@ -21,7 +21,11 @@
 
 **SmartShop** es una plataforma de comercio electrónico de última generación que integra un asistente de Inteligencia Artificial para asesorar al usuario durante su compra. El proyecto se centra en la eficiencia, el diseño moderno y la persistencia de datos.
 
-<a href="https://modern-ecommerce-react-ph12eex9c-christiamgsps-projects.vercel.app/" target="_blank">🚀 Ver Demo en Vivo</a>
+<div align="center">
+  <a href="https://modern-ecommerce-react-ph12eex9c-christiamgsps-projects.vercel.app/" target="_blank" rel="noopener noreferrer">
+    <h2>🚀 CLIC AQUÍ PARA VER LA DEMO EN VIVO 🚀</h2>
+  </a>
+</div>
 
 ---
 
