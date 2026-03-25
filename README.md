@@ -94,4 +94,4 @@ Uso de componentes de carga (`SkeletonCard`) para mejorar el _Lighthouse score_ 
 
 ---
 
-Desarrollado con ♥️ por [Christiam] - 2026 🚀
+Desarrollado con ♥️ por Christiam Silva - 2026 🚀
