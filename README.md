@@ -31,6 +31,6 @@
 
 3.Crea un archivo .env y añade tu clave:VITE_GROQ_API_KEY=tu_clave_aqui
 
-4.Lanza el proyecto:npm run dev
+4.Lanza el proyecto: npm run dev
 
 Hecho con ❤️ por Christiam Silva

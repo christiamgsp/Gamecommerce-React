@@ -1,39 +1,40 @@
-import { createContext, useState } from 'react';
+import { createContext } from 'react';
+import { useLocalStorage } from '../hooks/useLocalStorage'; // Importa tu hook
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [carrito, setCarrito] = useState([]);
+  // 🌟 AQUÍ ESTÁ EL CAMBIO MÁGICO:
+  // En lugar de useState([]), usamos tu hook:
+  const [carrito, setCarrito] = useLocalStorage('carrito_smartshop', []);
 
-  const RestadorUno = (id) => {
-    setCarrito((prev) => {
-      const itemExistente = prev.find((p) => p.id === id);
-      if (itemExistente.cantidad > 1) {
-        return prev.map((p) =>
-          p.id === id ? { ...p, cantidad: p.cantidad - 1 } : p
-        );
-      } else {
-        return prev.filter((p) => p.id !== id);
-      }
-    });
+  const Sumador = (producto) => {
+    const existe = carrito.find((item) => item.id === producto.id);
+    if (existe) {
+      setCarrito(
+        carrito.map((item) =>
+          item.id === producto.id
+            ? { ...item, cantidad: item.cantidad + 1 }
+            : item
+        )
+      );
+    } else {
+      setCarrito([...carrito, { ...producto, cantidad: 1 }]);
+    }
   };
 
-  const Sumador = (item) => {
-    setCarrito((prev) => {
-      const existe = prev.find((prod) => prod.id === item.id);
-      if (existe) {
-        return prev.map((prod) =>
-          prod.id === item.id
-            ? { ...prod, cantidad: (prod.cantidad || 1) + 1 }
-            : prod
-        );
-      }
-      return [...prev, { ...item, cantidad: 1 }];
-    });
+  const RestadorUno = (id) => {
+    setCarrito(
+      carrito.map((item) =>
+        item.id === id && item.cantidad > 1
+          ? { ...item, cantidad: item.cantidad - 1 }
+          : item
+      )
+    );
   };
 
   const restador = (id) => {
-    setCarrito((prev) => prev.filter((item) => item.id !== id));
+    setCarrito(carrito.filter((item) => item.id !== id));
   };
 
   const finalizarCompra = () => setCarrito([]);
@@ -47,11 +48,11 @@ export const CartProvider = ({ children }) => {
     <CartContext.Provider
       value={{
         carrito,
+        total,
         Sumador,
+        RestadorUno,
         restador,
         finalizarCompra,
-        total,
-        RestadorUno,
       }}>
       {children}
     </CartContext.Provider>
